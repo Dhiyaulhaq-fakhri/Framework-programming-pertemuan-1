@@ -23,14 +23,15 @@ export class BooksController {
     @Put(':id')
     updateData(
         @Param(`id`) id: string,
-        @Body() createbookdto: createbookdto) {
-        return this.bookservice.updatedata(parseInt(id), createbookdto);
+        @Body() createbookdto: createbookdto
+    ) {
+        return this.bookservice.updatedata(id, createbookdto);
     }
 
     // menghapus data
     @Delete(':id')
     hapusdata(@Param('id') id: string) {
-        return this.bookservice.hapusdata(parseInt(id));
+        return this.bookservice.hapusdata(id);
     }
     
 }
