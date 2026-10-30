@@ -13,6 +13,12 @@ export class BooksController {
         return this.bookservice.findall()
     }
 
+    // menampilkan data berdasarkan ID
+    @Get(':id')
+    show(@Param('id') id: string) {
+        return this.bookservice.findone(id)
+    }
+
     // menyimpan data
     @Post()
     simpanData(@Body() createbookdto: createbookdto) {

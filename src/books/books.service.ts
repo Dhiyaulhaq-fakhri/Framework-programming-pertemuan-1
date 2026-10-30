@@ -19,6 +19,18 @@ export class BooksService {
         });
     }
 
+    async findone(id: string): Promise<Book>{
+        const book = await this.bookRepository.findOne({
+            where: { id : id }
+        })
+
+        if(!book){
+            throw new NotFoundException(`Buku ${id} tidak ditemukan`)
+        }
+
+        return book
+    }
+
     async simpandata(createbookdto: createbookdto): Promise<Book> {
         const newbook = this.bookRepository.create({
             title: createbookdto.title,
